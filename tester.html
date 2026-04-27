@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoidBlue Feedback</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><div class="logo-icon"></div><span>VoidBlue Shader</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">Description</a>
+    <a href="changelog.html">Changelogs</a>
+    <a href="tester.html">Feedback</a>
+    <a href="tester-form.html">Tester Form</a>
+  </nav>
+</header>
+<main>
+<section>
+  <div class="badge">VoidBlue Feedback</div>
+  <h1>Feedback <span>Form</span></h1>
+  <p class="subtitle">Send quick feedback about bugs, FPS, visuals, water, sky, or suggestions.</p>
+
+  <form id="feedbackForm">
+    <input id="name" placeholder="Your name / Discord username" required>
+    <select id="type" required>
+      <option>General feedback</option>
+      <option>Bug report</option>
+      <option>FPS / performance</option>
+      <option>Visuals</option>
+      <option>Water</option>
+      <option>Sky</option>
+      <option>Compatibility</option>
+    </select>
+    <textarea id="message" placeholder="Write feedback..." required></textarea>
+    <button class="btn" type="submit">Save feedback</button>
+  </form>
+
+  <p class="small-note">Note: on GitHub Pages this saves in the current browser. The admin panel can view feedback saved on the same device/browser.</p>
+</section>
+</main>
+<footer>© 2026 VoidBlue Shader • Made by Gab_pro</footer>
+
+<script src="script.js"></script>
+<script>
+document.getElementById("feedbackForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const data = getLocalArray("voidblue_feedback");
+
+  data.unshift({
+    name: document.getElementById("name").value || "Anonymous",
+    type: document.getElementById("type").value,
+    message: document.getElementById("message").value || "No message.",
+    date: getTodayText()
+  });
+
+  setLocalArray("voidblue_feedback", data);
+  alert("Feedback saved!");
+  e.target.reset();
+});
+</script>
+</body>
+</html>
