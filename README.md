@@ -1,4 +1,4 @@
-# VoidBlue Site Fixed Clean
+# VoidBlue Site
 
 Corrected package:
 - Current version: 1.2
